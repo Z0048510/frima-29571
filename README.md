@@ -28,7 +28,7 @@ Things you may want to cover:
 
 ### Association
 has_many :products
-has_many :comments
+has_many :purchases
 
 ## product(商品情報)
 |Column      |Type      |Options                       |
@@ -45,36 +45,34 @@ has_many :comments
 
 ### Association
 belongs_to :user
-has_one :shopping
-has_many :comments
+has_one :purchase
 
 
-## comment(コメント情報)
+## purchase(購入情報)
 |Column  |Type      |Options                       |
 |--------|----------|------------------------------|
-|user    |references|null: false, foreign_key: true|
 |product |references|null: false, foreign_key: true|
-|comment |text      |null: false                   |
+|user    |references|null: false, foreign_key: true|
 
 ### Association
 belongs_to :product
 belongs_to :user
+has_one :shopping
 
 
 ## shopping(発送情報)
 |Column         |Type      |Options                       |
 |---------------|----------|------------------------------|
-|product        |references|null: false, foreign_key: true|
+|purchase       |references|null: false, foreign_key: true|
 |postnumber     |string    |null: false                   |
 |prefectures_id |integer   |null: false                   |
 |municipality   |string    |null: false                   |
 |address        |string    |null: false                   |
 |buildingname   |string    |                              |
 |phonenumber    |string    |null: false                   |
-|address        |string    |null: false                   |
 
 ### Association
-belongs_to :product
+belongs_to :purchase
 
 
 * Database initialization
