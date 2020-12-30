@@ -17,12 +17,16 @@ Things you may want to cover:
 
 |Column             |Type  |Options                  |
 |-------------------|------|-------------------------|
+|nickname           |string|null: false              |
 |firstname          |string|null: false              |
 |familyname         |string|null: false              |
 |firstnameasc       |string|null: false              |
 |familynameasc      |string|null: false              |
 |email              |string|null: false, unique: true|
 |encrypted_password |string|null: false              |
+|birthyear          |integer|null: false             |
+|birthmonth         |integer|null: false             |
+|birthday           |integer|null: false             |
 
 ### Association
 has_many :products
@@ -34,6 +38,7 @@ has_many :comments
 |------------|----------|------------------------------|
 |productname |string    |null: false                   |
 |amount      |integer   |null: false                   |
+|category_id |integer   |null: false                   |
 |status_id   |integer   |null: false                   |
 |payment_id  |integer   |null: false                   |
 |area_id     |integer   |null: false                   |
@@ -69,10 +74,16 @@ belongs_to :user
 
 
 ## shopping(発送情報)
-|Column  |Type      |Options                       |
-|--------|----------|------------------------------|
-|product |references|null: false, foreign_key: true|
-|address |string    |null: false                   |
+|Column         |Type      |Options                       |
+|---------------|-----------------------------------------|
+|product        |references|null: false, foreign_key: true|
+|postnumber     |string    |null: false                   |
+|prefectures_id |integer   |null: false                   |
+|municipality   |string    |null: false                   |
+|address        |string    |null: false                   |
+|buildingname   |string    |                              |
+|phonnumber     |integer   |null: false                   |
+|address        |string    |null: false                   |
 
 ### Association
 has_one :product
