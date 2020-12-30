@@ -15,14 +15,16 @@ Things you may want to cover:
 
 ## user(ユーザ情報)
 
-|Column   |Type|Options      |
-|---------|------|-----------|
-|username |string|null: false|
-|email    |string|null: false|
-|password |string|null: false|
+|Column             |Type  |Options                  |
+|-------------------|------|-------------------------|
+|firstname          |string|null: false              |
+|familyname         |string|null: false              |
+|firstnameasc       |string|null: false              |
+|familynameasc      |string|null: false              |
+|email              |string|null: false, unique: true|
+|encrypted_password |string|null: false              |
 
 ### Association
-
 has_many :products
 has_many :purchases
 has_many :comments
@@ -32,6 +34,10 @@ has_many :comments
 |------------|----------|------------------------------|
 |productname |string    |null: false                   |
 |amount      |integer   |null: false                   |
+|status_id   |integer   |null: false                   |
+|payment_id  |integer   |null: false                   |
+|area_id     |integer   |null: false                   |
+|day_id      |integer   |null: false                   |
 |user        |references|null :false, foreign_key: true|
 
 ### Association
@@ -45,7 +51,6 @@ has_many :comments
 |--------|----------|------------------------------|
 |product |references|null: false, foreign_key: true|
 |user    |references|null: false, foreign_key: true|
-|address |string    |null: false                   |
 
 ### Association
 has_one :product
@@ -61,6 +66,17 @@ belongs_to :user
 ### Association
 belongs_to :product
 belongs_to :user
+
+
+## shopping(発送情報)
+|Column  |Type      |Options                       |
+|--------|----------|------------------------------|
+|product |references|null: false, foreign_key: true|
+|address |string    |null: false                   |
+
+### Association
+has_one :product
+
 
 * Database initialization
 
