@@ -55,10 +55,9 @@ has_many :comments
 |--------|----------|------------------------------|
 |product |references|null: false, foreign_key: true|
 |user    |references|null: false, foreign_key: true|
-|shopping|references|null; false, foreign_key: true|
 
 ### Association
-has_one :product
+belongs_to :product
 belongs_to :user
 has_one :shopping
 
@@ -76,8 +75,7 @@ belongs_to :user
 
 ## shopping(発送情報)
 |Column         |Type      |Options                       |
-|---------------|-----------------------------------------|
-|product        |references|null: false, foreign_key: true|
+|---------------|----------|------------------------------|
 |purchase       |references|null: false, foreign_key: true|
 |postnumber     |string    |null: false                   |
 |prefectures_id |integer   |null: false                   |
@@ -88,8 +86,7 @@ belongs_to :user
 |address        |string    |null: false                   |
 
 ### Association
-has_one :product
-has_one :purchase
+belongs_to :purchase
 
 
 * Database initialization
