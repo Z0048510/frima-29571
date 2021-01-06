@@ -7,7 +7,6 @@ RSpec.describe Product, type: :model do
   end
 
   describe '商品の出品(DB登録)' do
-
     context '正常時' do
       it 'カラムが全てバリデーション通りに入力されれば登録できる' do
         expect(@product).to be_valid
@@ -36,19 +35,19 @@ RSpec.describe Product, type: :model do
       it 'amountが299以下だと登録できない' do
         @product.amount = 299
         @product.valid?
-        expect(@product.errors.full_messages).to include("Amount Out of setting range")
+        expect(@product.errors.full_messages).to include('Amount Out of setting range')
       end
 
       it 'amountが10000000以上だと登録できない' do
-        @product.amount = 10000000
+        @product.amount = 10_000_000
         @product.valid?
-        expect(@product.errors.full_messages).to include("Amount Out of setting range")
+        expect(@product.errors.full_messages).to include('Amount Out of setting range')
       end
 
       it 'amountが全角だと登録できない' do
         @product.amount = '３００'
         @product.valid?
-        expect(@product.errors.full_messages).to include("Amount Half-width number")
+        expect(@product.errors.full_messages).to include('Amount Half-width number')
       end
 
       it 'descriptionが空だと登録できない' do
@@ -60,33 +59,32 @@ RSpec.describe Product, type: :model do
       it 'category_idが空だと登録できない' do
         @product.category_id = nil
         @product.valid?
-        expect(@product.errors.full_messages).to include("Category Select")
+        expect(@product.errors.full_messages).to include('Category Select')
       end
 
       it 'status_idが空だと登録できない' do
         @product.status_id = nil
         @product.valid?
-        expect(@product.errors.full_messages).to include("Status Select")
+        expect(@product.errors.full_messages).to include('Status Select')
       end
 
       it 'payment_idが空だと登録できない' do
         @product.payment_id = nil
         @product.valid?
-        expect(@product.errors.full_messages).to include("Payment Select")
+        expect(@product.errors.full_messages).to include('Payment Select')
       end
 
       it 'area_idが空だと登録できない' do
         @product.area_id = nil
         @product.valid?
-        expect(@product.errors.full_messages).to include("Area Select")
+        expect(@product.errors.full_messages).to include('Area Select')
       end
 
       it 'day_idが空だと登録できない' do
         @product.day_id = nil
         @product.valid?
-        expect(@product.errors.full_messages).to include("Day Select")
+        expect(@product.errors.full_messages).to include('Day Select')
       end
-
     end
   end
 end

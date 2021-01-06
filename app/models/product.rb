@@ -12,11 +12,11 @@ class Product < ApplicationRecord
     validates :image
     validates :productname
     validates :description
-    validates :amount, format: {with: /\A[0-9]{3,7}\z/i, message: "Half-width number"},
-                       numericality: {only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message: "Out of setting range"}
+    validates :amount, format: { with: /\A[0-9]{3,7}\z/i, message: 'Half-width number' },
+                       numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: 'Out of setting range' }
   end
-  
-  with_options presence: {message: "Select"} do
+
+  with_options presence: { message: 'Select' } do
     validates :category_id
     validates :status_id
     validates :payment_id
