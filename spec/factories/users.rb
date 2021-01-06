@@ -8,7 +8,7 @@ FactoryBot.define do
     familynameasc             { dummyname.last.katakana }
     birthday                  { Faker::Date.between(from: '1930-01-01', to: 5.years.ago) }
     email                     { Faker::Internet.free_email }
-    password                  { Faker::Internet.password(min_length: 6) }
+    password                  { 'Pass' + Faker::Internet.password(min_length: 6) + '0' }
     password_confirmation     { password }
   end
 end
