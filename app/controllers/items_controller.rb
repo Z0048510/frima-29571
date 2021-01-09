@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :product_find_initialize, only: [:show, :edit, :update]
+  before_action :product_find_initialize, only: [:show, :edit, :update, :destroy]
+  before_action :user_check, only: [:edit, :update, :destroy]
 
   def index
     @products = Product.all.order('created_at DESC')
@@ -23,9 +24,6 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    if current_user.id != @product.user.id
-      redirect_to root_path
-    end
   end
 
   def update
@@ -36,11 +34,13 @@ class ItemsController < ApplicationController
     end
   end
 
-  # def destroy
-  #   product = Product.find(params[:id])
-  #   product.destroy
-  #   redirect_to root_path
-  # end
+  def destroy
+    if @product.destroy
+      redirect_to root_path
+    else
+      render :show
+    end
+  end
 
   private
 
@@ -51,6 +51,12 @@ class ItemsController < ApplicationController
 
   def product_find_initialize
     @product = Product.find(params[:id])
+  end
+
+  def user_check
+    if current_user.id != @product.user.id
+      redirect_to root_path
+    end
   end
 
 end
