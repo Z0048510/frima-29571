@@ -6,6 +6,7 @@ class Product < ApplicationRecord
   belongs_to :area
   belongs_to :category
   belongs_to :payment
+  belongs_to :day
   belongs_to :status
 
   with_options presence: true do
