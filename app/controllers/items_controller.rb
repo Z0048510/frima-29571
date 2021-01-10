@@ -4,7 +4,8 @@ class ItemsController < ApplicationController
   before_action :user_check, only: [:edit, :update, :destroy]
 
   def index
-    @products = Product.all.order('created_at DESC')
+    # @products = Product.all.order('created_at DESC')
+    @products = Product.includes(:purchase).order('created_at DESC')
   end
 
   def new
@@ -50,7 +51,8 @@ class ItemsController < ApplicationController
   end
 
   def product_find_initialize
-    @product = Product.find(params[:id])
+    # @product = Product.find(params[:id])
+    @product = Product.includes(:purchase).find(params[:id])
   end
 
   def user_check
