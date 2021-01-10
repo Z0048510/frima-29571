@@ -1,12 +1,16 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!
+  before_action :product_find_initialize
+  before_action :user_check
+  before_action :purchase_check
 
   def index
-    @product = Product.find(params[:item_id])
+    # @product = Product.find(params[:item_id])
     @purchase_shopping = PurchaseShopping.new
   end
 
   def create
-    @product = Product.find(params[:item_id])
+    # @product = Product.find(params[:item_id])
     @purchase_shopping = PurchaseShopping.new(purchase_shopping_params)
     if @purchase_shopping.valid?
       pay_item
@@ -30,6 +34,23 @@ class OrdersController < ApplicationController
       card: purchase_shopping_params[:token],
       currency: 'jpy'
     )
+  end
+
+  def user_check
+    if current_user.id == @product.user.id
+      redirect_to root_path
+    end
+  end
+
+  def product_find_initialize
+    # @product = Product.find(params[:id])
+    @product = Product.includes(:purchase).find(params[:item_id])
+  end
+
+  def purchase_check
+    if @product.purchase.present?
+      redirect_to root_path
+    end
   end
 
 end
