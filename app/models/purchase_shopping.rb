@@ -1,6 +1,6 @@
 class PurchaseShopping
-  include ActiveModel::Mode
-  attr_accessor :product_id, :user_id, :postnumber, :area_id, :municipality, :address, :buildingname, :phonenumber
+  include ActiveModel::Model
+  attr_accessor :product_id, :user_id, :postnumber, :area_id, :municipality, :address, :buildingname, :phonenumber, :token
 
   with_options presence: true do
     validates :product_id
@@ -10,6 +10,7 @@ class PurchaseShopping
     validates :municipality
     validates :address
     validates :phonenumber, format: {with: /\A[0-9]*\z/, message: "Input only number"}
+    validates :token
   end
 
   def save

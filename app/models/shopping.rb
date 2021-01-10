@@ -1,3 +1,3 @@
 class Shopping < ApplicationRecord
-  belogins_to :purchase
+  belongs_to :purchase
 end
