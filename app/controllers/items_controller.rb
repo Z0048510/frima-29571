@@ -22,6 +22,8 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @message = Message.new
+    @messages = Message.includes(:user).where(product_id = params[:id]).order('created_at DESC')
   end
 
   def edit
