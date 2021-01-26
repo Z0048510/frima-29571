@@ -204,3 +204,24 @@
   font-weight: bold;
   font-size: 23px;
 }
+
+.comments-table {
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+.comments-user {
+  width: 20%;
+  background-color: #eee;
+  border: 1px solid #dedede;
+  font-size: 14px;
+  text-align: center;
+}
+
+.comments-value {
+  width: 80%;
+  padding: 20px;
+  border: 1px solid #dedede;
+  font-size: 14px;
+  text-align: left;
+}

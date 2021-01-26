@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :products
   has_many :purchases
+  has_many :messages
 
   # nickname が空で入力されないバリデート
   validates :nickname, presence: true, uniqueness: { case_sensitive: true }

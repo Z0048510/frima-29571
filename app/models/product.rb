@@ -8,6 +8,7 @@ class Product < ApplicationRecord
   belongs_to :payment
   belongs_to :day
   belongs_to :status
+  has_many :messages
 
   with_options presence: true do
     validates :image
