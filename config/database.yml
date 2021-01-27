@@ -50,5 +50,8 @@ test:
 production:
   <<: *default
   database: frima_29571_production
-  username: frima_29571
-  password: <%= ENV['FRIMA_29571_DATABASE_PASSWORD'] %>
+  username: root
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock
+  # username: frima_29571
+  # password: <%= ENV['FRIMA_29571_DATABASE_PASSWORD'] %>
