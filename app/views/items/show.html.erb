@@ -98,10 +98,12 @@
     <table class="comments-table" id="comments">
       <tbody>
         <% @messages.each do |msg| %>
-          <tr>
-            <th class="comments-user"><%= msg.user.nickname %></th>
-            <td class="comments-value"><%= msg.created_at.strftime("%Y年%m月%d日 %H:%M:%S") %><br><%= msg.text %></td>
-          </tr>
+          <% if msg.product_id == @product.id %>
+            <tr>
+              <th class="comments-user"><%= msg.user.nickname %></th>
+              <td class="comments-value"><%= msg.created_at.strftime("%Y年%m月%d日 %H:%M:%S") %><br><%= msg.text %></td>
+            </tr>
+          <% end %>
         <% end %>
       </tbody>
     </table>
