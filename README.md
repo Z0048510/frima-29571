@@ -74,6 +74,16 @@ has_one :shopping
 ### Association
 belongs_to :purchase
 
+## message(コメント情報)
+|Column         |Type      |Options                       |
+|---------------|----------|------------------------------|
+|text           |text      |null: false                   |
+|user           |references|null: false, foreign_key: true|
+|product        |references|null: false, foreign_key: true|
+
+### Association
+belongs_to :user
+belongs_to :product
 
 * Database initialization
 
