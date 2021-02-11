@@ -12,7 +12,7 @@ consumer.subscriptions.create("MessageChannel", {
   received(data) {
     const data_newDate = new Date();
     const data_Year = data_newDate.getUTCFullYear();
-    const data_Month = ('0' + data_newDate.getUTCMonth() + 1).slice(-2);
+    const data_Month = ('0' + (data_newDate.getUTCMonth() + 1)).slice(-2);
     const data_Day = ('0' + data_newDate.getUTCDate()).slice(-2);
     const data_Hour = ('0' + data_newDate.getUTCHours()).slice(-2);
     const data_Minute = ('0' + data_newDate.getUTCMinutes()).slice(-2);
